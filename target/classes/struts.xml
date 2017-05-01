@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 配置开发者模式 -->
+    <constant name="struts.devMode" value="false" />
+	<!-- 配置URL扩展名 -->
+	<constant name="struts.action.extension=action" value="action"></constant>
+	<!-- 配置返回页面主题 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+
+
+    <package name="default" namespace="/" extends="struts-default">
+    
+    	<global-results>
+			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+		</global-results>
+    
+    	<!-- 测试struts的Action -->
+        <action name="test" class="actionTest">  <!-- 未整合Spring之前加上class写上类的全名 -->
+        	<result>test.jsp</result>
+        </action>
+        
+        <!-- 首页访问的Action -->
+		<action name="index" class="indexAction">
+			<result name="index">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		
+		<!-- 用户模块的Action -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="registUI">/WEB-INF/jsp/regist.jsp</result>
+			<result name="loginUI">/WEB-INF/jsp/login.jsp</result>
+			<result name="login" type="redirectAction">index</result>
+			<result name="logout" type="redirectAction">index</result>
+		</action>
+		
+		<!-- 商品模块的Action -->
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="product">/WEB-INF/jsp/product.jsp</result>
+			<result name="productList">/WEB-INF/jsp/productList.jsp</result>
+		</action>
+		
+		<!-- 购物车的Action -->
+		<action name="cart_*" class="cartAction" method="{1}">
+			<result name="cart">/WEB-INF/jsp/cart.jsp</result>
+		</action>
+		
+		<!-- 订单的Action -->
+		<action name="order_*" class="orderAction" method="{1}">
+			<result name="order">/WEB-INF/jsp/order.jsp</result>
+			<result name="orderList">/WEB-INF/jsp/orderList.jsp</result>
+			<result name="confirmReceipt" type="redirectAction">order_findByUid.action?page=1</result>
+		</action>
+    </package>
+</struts>
