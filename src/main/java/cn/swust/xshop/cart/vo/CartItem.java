@@ -1,15 +1,16 @@
 package cn.swust.xshop.cart.vo;
 
+import java.io.Serializable;
+
 import cn.swust.xshop.product.vo.Product;
 
 /**
  * 购物项对象
  * 
  */
-public class CartItem {
+public class CartItem implements Serializable {
 	private Product product;	 // 购物项中商品信息
 	private int count; 			 // 购买某种商品数量
-	private double subtotal; 	 // 购买某种商品小计
 
 	public Product getProduct() {
 		return product;
@@ -27,12 +28,10 @@ public class CartItem {
 		this.count = count;
 	}
 
-	// 小计自动计算的.
+	// R : 购物车项小计价格
 	public double getSubtotal() {
 		return count * product.getShop_price();
 	}
-	/*
-	 * public void setSubtotal(double subtotal) { this.subtotal = subtotal; }
-	 */
+	
 
 }

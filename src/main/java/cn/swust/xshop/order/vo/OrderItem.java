@@ -1,12 +1,14 @@
 package cn.swust.xshop.order.vo;
 
+import java.io.Serializable;
+
 import cn.swust.xshop.product.vo.Product;
 
 /**
  * 订单项的实体
  * 
  */
-public class OrderItem {
+public class OrderItem implements Serializable {
 	private Integer itemid;
 	private Integer count;
 	private Double subtotal;

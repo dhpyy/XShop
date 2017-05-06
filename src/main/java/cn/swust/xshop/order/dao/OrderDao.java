@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import cn.swust.xshop.base.BaseDao;
 import cn.swust.xshop.order.vo.Order;
-import cn.swust.xshop.order.vo.OrderItem;
+import cn.swust.xshop.utils.PageHibernateCallback;
 
 
 /**
@@ -25,25 +25,24 @@ public class OrderDao extends BaseDao<Order> {
 		return 0;
 	}
 	
-	// 带分页的查询订单
-	public List<Order> findByPage(int begin, int limit) {
-		return null;
-	}
-	
 	// 根据用户带分页的查询订单
 	public List<Order> findPageByUid(Integer uid, int begin, int limit) {
-		return null;
-	}
-	
-	// 根据订单id查询订单项
-	public List<OrderItem> findOrderItem(Integer oid) {
-		String hql = "from OrderItem oi where oi.order.oid = ?";
-		List<OrderItem> list = this.getHibernateTemplate().find(hql, oid);
+		String hql = "from Order o where o.user.uid = ? order by o.ordertime desc";
+		List<Order> list = this.getHibernateTemplate().execute(
+				new PageHibernateCallback<Order>(hql, new Object[] { uid },
+						begin, limit));
 		if (list != null && list.size() > 0) {
 			return list;
 		}
 		return null;
 	}
+	
+	// 带分页的查询订单
+	public List<Order> findByPage(int begin, int limit) {
+		return null;
+	}
+	
+	
 	
 	
 }

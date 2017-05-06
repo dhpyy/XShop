@@ -17,7 +17,7 @@
 	<div class="span5">
 		<div class="logo">
 			<a href="./网上商城/index.htm">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客"/>
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.png" alt="XShop"/>
 			</a>
 		</div>
 	</div>
@@ -57,7 +57,7 @@
 						<ul class="tabContent" style="display: block;">
 							<s:iterator var="p" value="hList">
 									<li>
-										<a href="${ pageContext.request.contextPath }/product_findByPid.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
+										<a href="${ pageContext.request.contextPath }/product_findById.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
 									</li>
 							</s:iterator>		
 						</ul>
@@ -139,7 +139,7 @@
 						 <ul class="tabContent" style="display: block;">
 						 	<s:iterator var="p" value="nList">
 									<li>
-										<a href="${ pageContext.request.contextPath }/product_findByPid.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>									</li>
+										<a href="${ pageContext.request.contextPath }/product_findById.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>									</li>
 									</li>
 							</s:iterator>		
 						</ul>
@@ -287,7 +287,7 @@
 		</ul>
 	</div>
 	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
+		<div class="copyright">Copyright © 2005-2017 网上商城 版权所有</div>
 	</div>
 </div>
 </body>

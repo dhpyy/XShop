@@ -1,10 +1,12 @@
 package cn.swust.xshop.adminuser.vo;
 
+import java.io.Serializable;
+
 /**
  * 后台用户登录实体
  * 
  */
-public class AdminUser {
+public class AdminUser implements Serializable {
 	private Integer uid;
 	private String username;
 	private String password;

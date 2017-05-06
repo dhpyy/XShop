@@ -1,5 +1,6 @@
 package cn.swust.xshop.order.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,10 +10,10 @@ import cn.swust.xshop.user.vo.User;
 /**
  * 订单实体
  */
-public class Order {
+public class Order implements Serializable {
 	private Integer oid;
-	private Double total;
 	private Date ordertime;
+	private Double total;
 	private Integer state; // 1:未付款 2:订单已经付款 3:已经发货 4:订单结束
 
 	// 订单的物流信息

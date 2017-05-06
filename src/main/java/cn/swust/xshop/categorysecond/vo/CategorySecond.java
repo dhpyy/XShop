@@ -1,5 +1,6 @@
 package cn.swust.xshop.categorysecond.vo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import cn.swust.xshop.product.vo.Product;
  * 二级分类的实体
  *
  */
-public class CategorySecond {
+public class CategorySecond implements Serializable {
 	private Integer csid;
 	private String csname;
 	// 所属一级分类.存的是一级分类的对象.

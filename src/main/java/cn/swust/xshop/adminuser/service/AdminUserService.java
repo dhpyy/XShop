@@ -9,6 +9,10 @@ import cn.swust.xshop.adminuser.vo.AdminUser;
 import cn.swust.xshop.base.BaseDao;
 import cn.swust.xshop.base.BaseService;
 
+/**
+ * 管理员模块业务层代码
+ *
+ */
 @Service
 public class AdminUserService extends BaseService<AdminUser> {
 

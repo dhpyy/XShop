@@ -18,7 +18,7 @@
 	<div class="span5">
 		<div class="logo">
 			<a href="./网上商城/index.htm">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客"/>
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.png" alt="XShop"/>
 			</a>
 		</div>
 	</div>
@@ -116,7 +116,9 @@
 							<input type="radio" name="pd_FrpId" value="CEB-NET-B2C"/>光大银行
 							<img src="${ pageContext.request.contextPath }/bank_img/guangda.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C"/>招商银行
-							<img src="${ pageContext.request.contextPath }/bank_img/cmb.bmp" align="middle"/>
+							<img src="${ pageContext.request.contextPath }/bank_img/cmb.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="pd_FrpId" value="POST-NET-B2C"/>邮政银行
+							<img src="${ pageContext.request.contextPath }/bank_img/post.bmp" align="middle"/>
 						</p>
 						<hr />
 						<p style="text-align:right">
@@ -176,7 +178,7 @@
 		</ul>
 	</div>
 	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
+		<div class="copyright">Copyright © 2005-2017 网上商城 版权所有</div>
 	</div>
 </div>
 </body>

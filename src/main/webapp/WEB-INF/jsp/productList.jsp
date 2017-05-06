@@ -16,7 +16,7 @@
 	<div class="span5">
 		<div class="logo">
 			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.png" alt="XShop">
 			</a>
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 						<ul>
 							<s:iterator var="p" value="pageBean.list">
 								<li>
-										<a href="${ pageContext.request.contextPath }/product_findByPid.action?pid=<s:property value="#p.pid"/>">
+										<a href="${ pageContext.request.contextPath }/product_findById.action?pid=<s:property value="#p.pid"/>">
 											<img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" width="170" height="170"  style="display: inline-block;">
 											   
 											<span style='color:green'>
@@ -152,17 +152,17 @@
 						|
 					</li>
 					<li>
-						<a >官网</a>
+						<a >服务声明</a>
 						|
 					</li>
 					<li>
-						<a >论坛</a>
+						<a >服务声明</a>
 						
 					</li>
 		</ul>
 	</div>
 	<div class="span24">
-		<div class="copyright">Copyright©2005-2015 网上商城 版权所有</div>
+		<div class="copyright">Copyright©2005-2017 网上商城 版权所有</div>
 	</div>
 </div>
 </body></html>

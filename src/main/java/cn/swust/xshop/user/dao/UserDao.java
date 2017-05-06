@@ -27,7 +27,7 @@ public class UserDao extends BaseDao<User> {
 	
 	// 根据用户名与密码查询用户
 	public User login(User user) {
-		String hql = "from User where username = ? and password";
+		String hql = "from User where username = ? and password = ?";
 		List<User> list = this.getHibernateTemplate().find(hql,user.getUsername(), user.getPassword());
 		if (list != null && list.size() > 0) {
 			return list.get(0);

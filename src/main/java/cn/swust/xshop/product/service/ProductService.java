@@ -39,11 +39,45 @@ public class ProductService extends BaseService<Product> {
 
 	// 根据一级分类id带有分页的商品查询
 	public PageBean<Product> findByPageCid(Integer cid, int page) {
-		return null;
+		PageBean<Product> pageBean = new PageBean<Product>();          // 根据页码计算出分页查询的区间
+		pageBean.setPage(page);					// 设置当前页码
+		int limit = 12;							// 设置每页显示记录个数
+		pageBean.setLimit(limit);
+		int totalCount = 0;						// 设置总记录数
+		totalCount = productDao.findCountCid(cid);
+		pageBean.setTotalCount(totalCount);
+		int totalPage = 0;						// 设置总页数:
+		if (totalCount % limit == 0) {
+			totalPage = totalCount / limit;
+		} else {
+			totalPage = totalCount / limit + 1;
+		}
+		pageBean.setTotalPage(totalPage);
+		int begin = (page - 1) * limit;			// 设置当前页记录集合
+		List<Product> list = productDao.findByPageCid(cid, begin, limit);// 调用Dao实现分页查询
+		pageBean.setList(list);
+		return pageBean;
 	}
 	
 	// 根据二级分类id带有分页的商品查询
 	public PageBean<Product> findByPageCsid(Integer csid, int page) {
-		return null;
+		PageBean<Product> pageBean = new PageBean<Product>();          // 根据页码计算出分页查询的区间
+		pageBean.setPage(page);					// 设置当前页码
+		int limit = 12;							// 设置每页显示记录个数
+		pageBean.setLimit(limit);
+		int totalCount = 0;						// 设置总记录数
+		totalCount = productDao.findCountCsid(csid);
+		pageBean.setTotalCount(totalCount);
+		int totalPage = 0;						// 设置总页数:
+		if (totalCount % limit == 0) {
+			totalPage = totalCount / limit;
+		} else {
+			totalPage = totalCount / limit + 1;
+		}
+		pageBean.setTotalPage(totalPage);
+		int begin = (page - 1) * limit;			// 设置当前页记录集合
+		List<Product> list = productDao.findByPageCsid(csid, begin, limit);// 调用Dao实现分页查询
+		pageBean.setList(list);
+		return pageBean;
 	}
 }

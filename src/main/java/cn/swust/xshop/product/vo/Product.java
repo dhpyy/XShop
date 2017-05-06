@@ -1,5 +1,6 @@
 package cn.swust.xshop.product.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import cn.swust.xshop.categorysecond.vo.CategorySecond;
@@ -8,7 +9,7 @@ import cn.swust.xshop.categorysecond.vo.CategorySecond;
  * 商品的实体对象
  * 
  */
-public class Product {
+public class Product implements Serializable {
 	private Integer pid;
 	private String pname;
 	private Double market_price;

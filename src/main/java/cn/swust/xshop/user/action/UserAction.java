@@ -22,45 +22,72 @@ import cn.swust.xshop.user.vo.User;
 public class UserAction extends BaseAction<User> {
 	
 	/**
-	 * 跳转到注册页面:(CUI)
+	 * CUI : 跳转到注册页面
 	 */
 	public String registPage() {
 		return "registUI";
 	}
 	
 	/**
-	 * 用户注册的方法:(C)
+	 * C : 用户注册
 	 */
 	public String regist() {
+		userService.save(model);
 		return "msg";
 	}
 	
 	/**
-	 * AJAX进行异步校验用户名的执行方法
+	 * R : AJAX进行异步校验用户
 	 * 
 	 */
-	public String findByName() {
+	public String findByName() throws IOException {
+		// 调用Service进行查询:
+		User existUser = userService.findByUsername(model.getUsername());
+		// 获得response对象,项页面输出:
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=UTF-8");
+		// 判断
+		if (existUser != null) {
+			// 查询到该用户:用户名已经存在
+			response.getWriter().println("<font color='red'>用户名已经存在</font>");
+		} else {
+			// 没查询到该用户:用户名可以使用
+			response.getWriter().println("<font color='green'>用户名可以使用</font>");
+		}
 		return NONE;				// struts.xml中没有相应的result，即不跳转到新的页面
 	}
 	
 	/**
-	 * 跳转到登录页面:(RUI)
+	 * RUI : 跳转到登录页面
 	 */
 	public String loginPage() {
-		return "registUI";
+		return "loginUI";
 	}
 	
 	/**
-	 * 登录:(R)
+	 * R : 登录
 	 */
 	public String login() {
-		return "login";
+		User existUser = userService.login(model);
+		// 判断
+		if (existUser == null) {
+			// 登录失败
+			this.addActionError("登录失败:用户名或密码错误或用户未激活!");
+			return "loginUI";
+		} else {
+			// 登录成功
+			ServletActionContext.getRequest().getSession()		// 将用户的信息存入到session中
+					.setAttribute("existUser", existUser);
+			// 页面跳转
+			return "login";
+		}
 	}
 	
 	/**
-	 * 用户注销
+	 * D : 用户注销
 	 */
 	public String quit(){
+		ServletActionContext.getRequest().getSession().invalidate();	// 销毁session
 		return "logout";
 	}
 }

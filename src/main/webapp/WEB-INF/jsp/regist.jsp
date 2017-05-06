@@ -84,7 +84,7 @@
 	<div class="span5">
 		<div class="logo">
 			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.png" alt="XShop">
 			</a>
 		</div>
 	</div>
@@ -282,7 +282,7 @@
 		</ul>
 	</div>
 	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
+		<div class="copyright">Copyright © 2005-2017 网上商城 版权所有</div>
 	</div>
 </div>
 <div id="_my97DP" style="position: absolute; top: -1970px; left: -1970px;"><iframe style="width: 190px; height: 191px;" src="./会员注册 - Powered By Mango Team_files/My97DatePicker.htm" frameborder="0" border="0" scrolling="no"></iframe></div></body></html>

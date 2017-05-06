@@ -22,8 +22,8 @@
 		<div class="span5">
 			<div class="logo">
 				<a href="./网上商城/index.htm"> <img
-					src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif"
-					alt="传智播客" /> </a>
+					src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.png"
+					alt="XShop" /> </a>
 			</div>
 		</div>
 		<div class="span9">
@@ -59,7 +59,7 @@
 							</font>
 							&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">
 								<s:if test="#order.state == 1">
-									<a href="${ pageContext.request.contextPath }/order_findByOid.action?oid=<s:property value="#order.oid" />">付款</a>
+									<a href="${ pageContext.request.contextPath }/order_findById.action?oid=<s:property value="#order.oid" />">付款</a>
 								</s:if>
 								<s:if test="#order.state == 2">
 									已付款
@@ -155,7 +155,7 @@
 			</ul>
 		</div>
 		<div class="span24">
-			<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
+			<div class="copyright">Copyright © 2005-2017 网上商城 版权所有</div>
 		</div>
 	</div>
 </body>

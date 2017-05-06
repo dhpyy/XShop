@@ -1,5 +1,6 @@
 package cn.swust.xshop.user.vo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,7 +9,7 @@ import cn.swust.xshop.order.vo.Order;
 /**
  * 用户名模块实体类:
  */
-public class User {
+public class User implements Serializable {
 	private Integer uid;
 	private String username;
 	private String password;

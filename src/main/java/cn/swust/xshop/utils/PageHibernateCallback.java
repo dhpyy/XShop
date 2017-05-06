@@ -16,8 +16,7 @@ public class PageHibernateCallback<T> implements HibernateCallback<List<T>>{
 	private int pageSize;
 	
 
-	public PageHibernateCallback(String hql, Object[] params,
-			int startIndex, int pageSize) {
+	public PageHibernateCallback(String hql, Object[] params, int startIndex, int pageSize) {	// 构造方法
 		super();
 		this.hql = hql;
 		this.params = params;
@@ -27,17 +26,16 @@ public class PageHibernateCallback<T> implements HibernateCallback<List<T>>{
 
 
 
-	public List<T> doInHibernate(Session session) throws HibernateException,
-			SQLException {
+	public List<T> doInHibernate(Session session) throws HibernateException,SQLException {   // 回调函数
 		//1 执行hql语句
 		Query query = session.createQuery(hql);
-		//2 实际参数
+		//2 设置参数条件
 		if(params != null){
 			for(int i = 0 ; i < params.length ; i ++){
 				query.setParameter(i, params[i]);
 			}
 		}
-		//3 分页
+		//3 设置分页条件
 		query.setFirstResult(startIndex);
 		query.setMaxResults(pageSize);
 		
