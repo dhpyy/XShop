@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import cn.swust.xshop.base.BaseDao;
 import cn.swust.xshop.categorysecond.vo.CategorySecond;
+import cn.swust.xshop.utils.PageHibernateCallback;
 
 
 /**
@@ -14,8 +15,11 @@ import cn.swust.xshop.categorysecond.vo.CategorySecond;
  */
 @Repository
 public class CategorySecondDao extends BaseDao<CategorySecond> {
-	// 分页查询
+	// R ：分页查询
 	public List<CategorySecond> findByPage(int begin, int limit) {
-		return null;
+		String hql = "from CategorySecond order by csid desc";
+		List<CategorySecond> list = this.getHibernateTemplate().execute(
+				new PageHibernateCallback<CategorySecond>(hql, null, begin, limit));
+		return list;
 	}
 }

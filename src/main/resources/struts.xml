@@ -14,8 +14,14 @@
 
     <package name="default" namespace="/" extends="struts-default">
     
+    	<!-- 配置自定义拦截器 -->
+		<interceptors>
+			<interceptor name="privilegeInterceptor" class="cn.swust.xshop.interceptor.PrivilegeInterceptor"/>
+		</interceptors>
+    
     	<global-results>
-			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+			<result name="msg">/WEB-INF/jsp/msg.jsp</result>	<!-- 前端全局结果页面-->
+			<result name="login">/admin/index.jsp</result>      <!-- 后台全局结果页面-->
 		</global-results>
     
     	<!-- 测试struts的Action -->
@@ -52,6 +58,45 @@
 			<result name="order">/WEB-INF/jsp/order.jsp</result>
 			<result name="orderList">/WEB-INF/jsp/orderList.jsp</result>
 			<result name="confirmReceipt" type="redirectAction">order_findByUid.action?page=1</result>
+		</action>
+		
+		<!-- 后台登录Action -->
+		<action name="adminUser_*" class="adminUserAction" method="{1}">
+			<result name="loginUI">/admin/index.jsp</result>
+			<result name="login" type="redirect">/admin/home.jsp</result>
+			<interceptor-ref name="privilegeInterceptor">		 <!-- 引入自定义拦截器 -->
+				<param name="excludeMethods">login</param>       <!-- 定义拦截例外的方法：本action中的login方法 -->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>               <!-- 追加默认拦截器 -->
+		</action>
+		
+		<!-- 后台一级分类管理Action -->
+		<action name="adminCategory_*" class="adminCategoryAction" method="{1}">
+			<result name="list">/admin/category/list.jsp</result>
+			<result name="editUI">/admin/category/edit.jsp</result>
+			<result name="toList" type="redirectAction">adminCategory_findAll</result>
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<!-- 后台二级分类管理Action -->
+		<action name="adminCategorySecond_*" class="adminCategorySecondAction" method="{1}">
+			<result name="list">/admin/categorysecond/list.jsp</result>
+			<result name="addUI">/admin/categorysecond/add.jsp</result>
+			<result name="editUI">/admin/categorysecond/edit.jsp</result>
+			<result name="toList" type="redirectAction">adminCategorySecond_findAll?page=1</result>
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<!-- 后台商品管理的Action -->
+		<action name="adminProduct_*" class="adminProductAction" method="{1}">
+			<result name="list">/admin/product/list.jsp</result>
+			<result name="addUI">/admin/product/add.jsp</result>
+			<result name="editUI">/admin/product/edit.jsp</result>
+			<result name="toList" type="redirectAction">adminProduct_findAll.action?page=1</result>
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
 		</action>
     </package>
 </struts>
