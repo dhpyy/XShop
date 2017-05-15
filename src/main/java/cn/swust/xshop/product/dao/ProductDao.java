@@ -82,6 +82,14 @@ public class ProductDao extends BaseDao<Product> {
 		return null;
 	}
 	
-	
+	// 后台查询所有商品
+	public List<Product> findByPage(int begin, int limit) {
+		String hql = "from Product order by pdate desc";
+		List<Product> list =  this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, null, begin, limit));
+		if(list != null && list.size() > 0){
+			return list;
+		}
+		return null;
+	}
 	
 }

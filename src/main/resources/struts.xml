@@ -98,5 +98,23 @@
 			<interceptor-ref name="privilegeInterceptor"/>
 			<interceptor-ref name="defaultStack"/>
 		</action>
+		
+		<!-- 后台订单管理Action -->
+		<action name="adminOrder_*" class="adminOrderAction" method="{1}">
+			<result name="list">/admin/order/list.jsp</result>
+			<result name="toList" type="redirectAction">adminOrder_findAll.action?page=1</result>
+			<result name="orderItem" >/admin/order/orderItem.jsp</result>
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<!-- 后台用户管理Action -->
+		<action name="userAdmin_*" class="userAdminAction" method="{1}">
+			<result name="list">/admin/user/list.jsp</result>
+			<result name="toList" type="redirectAction">userAdmin_findAll.action?page=1</result>
+			<result name="editUI">/admin/user/edit.jsp</result>
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
     </package>
 </struts>

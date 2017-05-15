@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import cn.swust.xshop.base.BaseDao;
 import cn.swust.xshop.user.vo.User;
+import cn.swust.xshop.utils.PageHibernateCallback;
 
 
 /**
@@ -37,6 +38,9 @@ public class UserDao extends BaseDao<User> {
 	
 	// 带分页的查询
 	public List<User> findByPage(int begin, int limit) {
-		return null;
+		String hql = "from User";
+		List<User> list = this.getHibernateTemplate().execute(
+				new PageHibernateCallback<User>(hql, null, begin, limit));
+		return list;
 	}
 }
