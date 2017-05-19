@@ -1,0 +1,26 @@
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	<welcome-file-list>  
+        <welcome-file>index.jsp</welcome-file>  
+    </welcome-file-list>  
+    
+	<!-- 监听器 (处理函数中创建Spring容器对象:Spring与Struts2整合) -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param> 
+	
+    <!-- Struts2过滤器配置 -->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+</web-app>

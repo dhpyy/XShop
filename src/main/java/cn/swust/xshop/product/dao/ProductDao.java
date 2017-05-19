@@ -3,6 +3,8 @@ package cn.swust.xshop.product.dao;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -92,4 +94,34 @@ public class ProductDao extends BaseDao<Product> {
 		return null;
 	}
 	
+	// 根据关键词查询商品的个数
+	public int findCountByLike(String keyword) {  
+		DetachedCriteria conditions = DetachedCriteria.forClass(Product.class);
+		Disjunction dis = Restrictions.disjunction();										// 添加多个or条件
+		dis.add(Restrictions.like("pname", keyword, MatchMode.ANYWHERE));					// 设置模糊查询模式&str%
+		dis.add(Restrictions.like("pdesc", keyword, MatchMode.ANYWHERE));
+		conditions.add(dis);
+		List<Product> list = this.getHibernateTemplate().findByCriteria(conditions, 0, 10);
+		if(list != null && list.size() > 0){
+			return list.size();
+		}
+		return 0;
+    }  
+		
+	// 根据关键词查询商品的集合
+	public List findByLike(String keyword, int begin, int limit) {  
+		DetachedCriteria conditions = DetachedCriteria.forClass(Product.class);
+		Disjunction dis = Restrictions.disjunction();										// 添加多个or条件
+		dis.add(Restrictions.like("pname", keyword, MatchMode.ANYWHERE));					// 设置模糊查询模式&str%
+		dis.add(Restrictions.like("pdesc", keyword, MatchMode.ANYWHERE));
+		conditions.add(dis);
+		List<Product> list = this.getHibernateTemplate().findByCriteria(conditions, 0, 10);
+		if(list != null && list.size() > 0){
+			return list;
+		}
+		return null;
+    }  
+    
+	
+      
 }

@@ -109,4 +109,27 @@ public class ProductService extends BaseService<Product> {
 		pageBean.setList(list);
 		return pageBean;
 	}
+	
+	// 根据关键词查询商品带分页
+	public PageBean<Product> findByLike(String keyword, Integer page) {
+		PageBean<Product> pageBean = new PageBean<Product>();          // 根据页码计算出分页查询的区间
+		pageBean.setPage(page);					// 设置当前页码
+		int limit = 10;							// 设置每页显示记录个数
+		pageBean.setLimit(limit);
+		int totalCount = 0;						// 设置总记录数
+		totalCount = productDao.findCountByLike(keyword);
+		pageBean.setTotalCount(totalCount);
+		int totalPage = 0;						// 设置总页数:
+		if (totalCount % limit == 0) {
+			totalPage = totalCount / limit;
+		} else {
+			totalPage = totalCount / limit + 1;
+		}
+		pageBean.setTotalPage(totalPage);
+		int begin = (page - 1) * limit;			// 设置当前页记录集合
+		List<Product> list = productDao.findByLike(keyword, begin, limit);// 调用Dao实现分页查询
+		pageBean.setList(list);
+		return pageBean;
+	}
+	
 }

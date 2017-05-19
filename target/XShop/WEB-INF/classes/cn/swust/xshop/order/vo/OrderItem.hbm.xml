@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.swust.xshop.order.vo.OrderItem" table="orderitem">
+		<id name="itemid">
+			<generator class="native"/>
+		</id>
+		
+		<property name="count"/>
+		<property name="subtotal"/>
+		<!-- 订单项与产品关系: 一个产品可以有多个订单项， 一个订单项只属于一个产品 -->
+		<many-to-one name="product" lazy="false" class="cn.swust.xshop.product.vo.Product" column="pid"></many-to-one>
+		
+		<many-to-one name="order" class="cn.swust.xshop.order.vo.Order" column="oid"/>
+	</class>
+</hibernate-mapping>
